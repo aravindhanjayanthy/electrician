@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Birthstone&family=Caveat:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Margarine&family=Modern+Antiqua&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orelega+One&family=Playwrite+AU+NSW:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Satisfy&family=Yusei+Magic&family=Zeyada&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+#logo{
+     height: 75px;
+     width: 75px;
+     
+}
+#logo img{
+     height: 75px;
+     width: 75px;
+    clip-path: circle(37px);
+}
+#navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 5px 5px 20px rgba( 0,0,0,0.5);
+    background-color: black;
+}
+#navbarSupportedContent a{
+    color: white;
+    border-bottom: 2px solid transparent;
+}
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+
+/****home****/
+
+#home .card{
+    position: relative;
+    top: 100px;
+     font-family: "Montserrat", sans-serif;
+}
+#maintext{
+    margin-top: 20px;
+}
+.dropdown-item{
+    color: purple !important;
+}
+
+/****aboutus****/
+
+#aboutm{
+    margin-top: 200px;
+}
+
+#img-about{
+padding-top: 200px;
+}
+
+
+/****services****/
+
+#services .row{
+    background-color: rgba(128, 128, 128, 0.622);
+}
+
+#services .card{
+    margin-left: 50px;
+    background-color: rgba(128, 128, 128, 0.255);
+    }
+
+#services-text{
+    padding-left: 65px;
+    padding-top: 20px;
+    font-family:"Montserrat", sans-serif;
+}
+#boardimg{
+    height: 223px;
+}
+
+/****contact us****/
+
+#contact .row{
+    margin-top: 70px;
+}
+
+#form1{
+    margin-left: 40px;
+}
+
+#contact h6{
+    margin-top: 10px;
+}
+
+/****phonenumber****/
+
+.intl-tel-input {
+  display: table-cell;
+}
+.intl-tel-input .selected-flag {
+  z-index: 4;
+}
+.intl-tel-input .country-list {
+  z-index: 5;
+}
+.input-group .intl-tel-input .form-control {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modular Switch Plate Configurator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <style>
+    .switch-plate {
+      display: grid;
+      gap: 10px;
+      background-color: rgb(25, 150, 161);
+      border-radius: 10px;
+      padding: 10px;
+      margin: 0 auto 20px;
+      justify-content: center;
+    }
+    .cols-1 { grid-template-columns: repeat(1, 1fr); }
+    .cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .cols-6 { grid-template-columns: repeat(6, 1fr); }
+    .cols-8 { grid-template-columns: repeat(8, 1fr); }
+    .cols-9 { grid-template-columns: repeat(9, 1fr); }
+    .userInput {
+      height: 60px;
+      width: 40px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      justify-self: center;
+    }
+    .plate-label {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .btn-model { min-width: 80px; }
+  </style>
+</head>
+<body>
+  <div class="container my-4">
+    <h2 class="text-center">Modular Switch Plate Configurator</h2>
+    <div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
+      <button onclick="addBoard('18')" class="btn btn-outline-primary btn-model">18M</button>
+      <button onclick="addBoard('16')" class="btn btn-outline-primary btn-model">16M</button>
+      <button onclick="addBoard('12')" class="btn btn-outline-primary btn-model">12M</button>
+      <button onclick="addBoard('09')" class="btn btn-outline-primary btn-model">09M</button>
+      <button onclick="addBoard('08')" class="btn btn-outline-primary btn-model">08M</button>
+      <button onclick="addBoard('06')" class="btn btn-outline-primary btn-model">06M</button>
+      <button onclick="addBoard('04')" class="btn btn-outline-primary btn-model">04M</button>
+      <button onclick="addBoard('03')" class="btn btn-outline-primary btn-model">03M</button>
+      <button onclick="addBoard('02')" class="btn btn-outline-primary btn-model">02M</button>
+      <button onclick="addBoard('01')" class="btn btn-outline-primary btn-model">01M</button>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div id="input-container" class="col-lg-12 d-flex flex-column align-items-center"></div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <label for="entryDate" class="me-2">Date:</label>
+      <input type="date" id="entryDate" class="form-control w-25" />
+    </div>
+
+    <div class="d-flex justify-content-center mt-4 gap-3">
+      <button onclick="storeValues()" class="btn btn-success">Save</button>
+      <button onclick="resetAll()" class="btn btn-secondary">Clear</button>
+      <button onclick="exportToPDF()" class="btn btn-danger">Export to PDF</button>
+    </div>
+
+    <div class="text-center mt-4">
+      <p id="display"><strong>Stored Values:</strong> No values saved.</p>
+    </div>
+  </div>
+
+  <datalist id="switchTypes">
+    <option value="5s">5Ams Switch</option>
+    <option value="2w">5Ams 2Way Switch</option>
+    <option value="5p">5Ams Socket</option>
+    <option value="15s">15Ams Switch</option>
+    <option value="15p">15Ams Socket</option>
+    <option value="fs">Fan Regulator Switch</option>
+    <option value="fp">Fan Regulator Socket</option>
+    <option value="bs">Bell Switch</option>
+    <option value="sd">Switch Dummy</option>
+  </datalist>
+
+  <script>
+    const labels = {
+      "5s": "5Ams Switch", "2w": "5Ams 2Way Switch", "5p": "5Ams Socket",
+      "15s": "15Ams Switch", "15p": "15Ams Socket",
+      "fs": "Fan Regulator Switch", "fp": "Fan Regulator Socket",
+      "bs": "Bell Switch", "sd": "Switch Dummy"
+    };
+
+    const columnMap = {
+      "18": "cols-6", "16": "cols-8", "12": "cols-6", "09": "cols-9",
+      "08": "cols-8", "06": "cols-6", "04": "cols-4",
+      "03": "cols-3", "02": "cols-2", "01": "cols-1"
+    };
+
+    let boardCounter = 0;
+
+    function addBoard(size) {
+      boardCounter++;
+      const count = parseInt(size);
+      const container = document.getElementById("input-container");
+
+      const boardWrapper = document.createElement("div");
+      boardWrapper.id = `board-wrapper-${boardCounter}`;
+      boardWrapper.className = "m-5 p-4 border rounded bg-light w-20";
+
+      const label = document.createElement("div");
+      label.className = "plate-label";
+      label.textContent = `Board ${boardCounter} - ${size}M`;
+      boardWrapper.appendChild(label);
+
+      const switchPlate = document.createElement("div");
+      switchPlate.className = `switch-plate ${columnMap[size] || "cols-6"}`;
+
+      for (let i = 0; i < count; i++) {
+        const input = document.createElement("input");
+        input.className = "userInput";
+        input.setAttribute("list", "switchTypes");
+        input.id = `board${boardCounter}-slot${i}`;
+        switchPlate.appendChild(input);
+      }
+
+      boardWrapper.appendChild(switchPlate);
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "btn btn-outline-danger btn-sm mt-3";
+      removeBtn.innerHTML = "Remove This Board";
+      removeBtn.onclick = () => boardWrapper.remove();
+
+      boardWrapper.appendChild(removeBtn);
+      container.appendChild(boardWrapper);
+    }
+
+    function storeValues() {
+      const inputs = document.querySelectorAll(".userInput");
+      const values = [];
+      let allValid = true;
+
+      inputs.forEach(input => {
+        const val = input.value.trim();
+        if (labels.hasOwnProperty(val)) {
+          input.style.border = "";
+          values.push(val);
+        } else {
+          input.style.border = "2px solid red";
+          allValid = false;
+        }
+      });
+
+      if (!allValid) {
+        alert("Some inputs are invalid or empty. Please correct them.");
+        return;
+      }
+
+      localStorage.setItem("switchStates", JSON.stringify(values));
+      showStoredValues();
+      alert("Switch values saved!");
+    }
+
+    function resetAll() {
+      localStorage.removeItem("switchStates");
+      document.getElementById("input-container").innerHTML = "";
+      boardCounter = 0;
+      document.getElementById("entryDate").value = "";
+      showStoredValues();
+      alert("All data cleared!");
+    }
+
+    function showStoredValues() {
+      const stored = JSON.parse(localStorage.getItem("switchStates")) || [];
+      const output = document.getElementById("display");
+
+      if (stored.length === 0) {
+        output.innerHTML = "<strong>Stored Values:</strong> No values saved.";
+        return;
+      }
+
+      const countMap = {}, specials = { "5p": 0, "15p": 0, "fp": 0 };
+
+      stored.forEach(val => {
+        if (specials.hasOwnProperty(val)) specials[val]++;
+        else countMap[val] = (countMap[val] || 0) + 1;
+      });
+
+
+      const converted = {
+        "5p": Math.floor(specials["5p"] / 2),
+        "15p": Math.floor(specials["15p"] / 2),
+        "fp": Math.floor(specials["fp"] / 2)
+      };
+
+      for (const key in converted) {
+        if (converted[key] > 0) countMap[key] = (countMap[key] || 0) + converted[key];
+      }
+
+      const result = Object.keys(countMap)
+        .filter(k => countMap[k] > 0)
+        .sort()
+        .map((key, i) => `${i + 1}. ${labels[key]} (Total: ${countMap[key]})`);
+
+output.innerHTML = "<strong>Stored Values:</strong><br>" + result.join("<br>");
+    }
+
+    function exportToPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const stored = JSON.parse(localStorage.getItem("switchStates")) || [];
+      const entryDate = document.getElementById("entryDate").value;
+
+      if (stored.length === 0) {
+        alert("No data to export!");
+        return;
+      }
+
+      const countMap = {}, specials = { "5p": 0, "15p": 0, "fp": 0 };
+
+      stored.forEach(val => {
+        if (specials.hasOwnProperty(val)) specials[val]++;
+        else countMap[val] = (countMap[val] || 0) + 1;
+      });
+
+      const converted = {
+        "5p": Math.floor(specials["5p"] / 2),
+        "15p": Math.floor(specials["15p"] / 2),
+        "fp": Math.floor(specials["fp"] / 2)
+      };
+
+      for (const key in converted) {
+        if (converted[key] > 0) countMap[key] = (countMap[key] || 0) + converted[key];
+      }
+
+      const rows = Object.keys(countMap)
+        .filter(k => countMap[k] > 0)
+        .sort()
+        .map(k => [labels[k], countMap[k]]);
+
+      doc.setFontSize(16);
+      doc.text("Switch List", 14, 20);
+      doc.setFontSize(11);
+      doc.text(`Date: ${entryDate || "N/A"}`, 14, 28);
+
+      doc.autoTable({
+        startY: 35,
+        head: [["Switch Type", "Total Count"]],
+        body: rows,
+        theme: "striped"
+      });
+
+      doc.save(`switch-summary-${entryDate || "today"}.pdf`);
+    }
+
+    window.addEventListener("DOMContentLoaded", showStoredValues);
+  </script>
+</body>
+</html>

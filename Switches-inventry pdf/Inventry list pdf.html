@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switches Inventry</title>
+    <link rel="stylesheet" href="Inventry list pdf.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="col-lg-06 col-md-6 col-12">
+             <label for="Builders">Details of Builders :           </label> <input id="builders"          type="text" placeholder=""> 
+            <label for="5ams switch">5Ams 1Way Switch :            </label> <input id="5ams-switch"       type="text" placeholder="no of switches">
+            <label for="5ams 5ams-2wayswitch">5Ams 2way Switch :   </label> <input id="5ams-2wayswitch"   type="text" placeholder="no of switches">
+            <label for="5ams Bellswitch">5Ams Bell Switch :        </label> <input id="Bell"              type="text" placeholder="no of switches">
+            <label for="5ams socket">5Ams Socket :                 </label> <input id="5ams-socket"       type="text" placeholder="no of switches">
+            <label for="15ams switch">15Ams Switch with indicator: </label> <input id="15ams-switch"      type="text" placeholder="no of switches">
+            <label for="15ams socket">15Ams Socket :               </label> <input id="15ams-socket"      type="text" placeholder="no of Socket">
+            <label for="Dimmer1">Dimmer Step 1M :                  </label> <input id="dimmer-1m"         type="text" placeholder="no of Dimmer">
+            <label for="Dimmer2">Dimmer Step 2M :                  </label> <input id="dimmer-2m"         type="text" placeholder="no of Dimmer">
+            <label for="ac-mcb">20Ams MCB Switch Type :            </label> <input id="ac-mcb"            type="text" placeholder="no of MCB">
+            <label for="acsocket">25Ams Socket :                   </label> <input id="25ams-socket"      type="text" placeholder="no of Socket">
+            <label for="Dummy">Switch Dummy :                      </label> <input id="switch-dummy"      type="text" placeholder="no of Switch Dummy">
+            <label for="18mplate">18model plate :                  </label> <input id="18mplate"          type="text" placeholder="no of Plates">
+            <label for="16mplate">16model plate :                  </label> <input id="16mplate"          type="text" placeholder="no of Plates">
+            <label for="12mplate">12model plate :                  </label> <input id="12mplate"          type="text" placeholder="no of Plates">
+            <label for="09mplate">09model plate :                  </label> <input id="09mplate"          type="text" placeholder="no of Plates">
+            <label for="08mplate">08model plate :                  </label> <input id="08mplate"          type="text" placeholder="no of Plates">
+            <label for="06mplate">06model plate :                  </label> <input id="06mplate"          type="text" placeholder="no of Plates">
+            <label for="04mplate">04model plate :                  </label> <input id="04mplate"          type="text" placeholder="no of Plates">
+            <label for="03mplate">03model plate :                  </label> <input id="03mplate"          type="text" placeholder="no of Plates">
+            <label for="02mplate">02model plate :                  </label> <input id="02mplate"          type="text" placeholder="no of Plates">
+            <label for="01mplate">01model plate :                  </label> <input id="01mplate"          type="text" placeholder="no of Plates">
+            <label for="40ams-isolator">40Ams 4pole Isolator :     </label> <input id="40ams-isolator"    type="text" placeholder="no of Isolators">
+            <label for="40ams-isolator">40Ams 2pole Isolator :     </label> <input id="40ams-2pisolator"  type="text" placeholder="no of Isolators">
+            <label for="63ams-isolator">63Ams Isolator:            </label> <input id="63Ams-Isolator"          type="text" placeholder="no of Plates">
+            <label for="63ams-rotary">63Ams Rotary Switches :      </label> <input id="63Rotary-switches"   type="text" placeholder="no of Rotary Switches">
+            <label for="40ams-rotary">40Ams Rotary Switches :      </label> <input id="40Rotary-switches" type="text" placeholder="no of Rotary Switches">
+            <label for="single-pole-mcb">Single Pole Mcb 32Ams :   </label> <input id="Single32Ams"       type="text" placeholder="no of Mcb">
+            <label for="single-pole-mcb">Single Pole Mcb 20Ams :   </label> <input id="Single20Ams"       type="text" placeholder="no of Plates">
+            <label for="single-pole-mcb">Single Pole Mcb 16Ams :   </label> <input id="Single16Ams"       type="text" placeholder="no of Plates">
+            <label for="single-pole-mcb">Single Pole Mcb 10Ams :   </label> <input id="Single10Ams"       type="text" placeholder="no of Plates">
+            <label for="single-pole-mcb">Single Pole Mcb 06Ams :   </label> <input id="Single06Ams"       type="text" placeholder="no of Plates">
+            <label for="tape">Tape(Deer-Brand) :                   </label> <input id="Tape"              type="text" placeholder="no of Tapes">
+            <label for="indicator">R,Y,B Round Indicator :         </label> <input id="RYB-Indicator"      type="text" placeholder="no of Rotary Switches">
+            <label for="angle holder">Angle Holder :               </label> <input id="Angle-Holder"      type="text" placeholder="no of Holders">
+            <label for="button holder">Button Holder :             </label> <input id="Button-Holder"     type="text" placeholder="no of Holders">
+            <label for="ceiling rose">Ceiling Rose :               </label> <input id="Ceiling-Rose"      type="text" placeholder="no of Ceiling Rose">
+            <label for="round plate">Round Plate :                 </label> <input id="Round-Plates"      type="text" placeholder="no of Round Plates">
+            <label for="fanplate">Fan Plate :                      </label> <input id="Fan-Plate"         type="text" placeholder="no of Fan Plate">
+            <label for="15*6">15*6 Pvc Sheet:                     </label> <input id="15*6sheet"          type="text" placeholder="no of Sheets">
+            <label for="15*4">15*4 Pvc Sheet:                     </label> <input id="15*4sheet"          type="text" placeholder="no of Sheets">
+            <label for="12*6">12*6 Pvc Sheet:                     </label> <input id="12*6sheet"          type="text" placeholder="no of Sheets">
+            <label for="12*4">12*4 Pvc Sheet:                     </label> <input id="12*4sheet"          type="text" placeholder="no of Sheets">
+            <label for="10*6">10*6 Pvc Sheet:                     </label> <input id="10*6sheet"          type="text" placeholder="no of Sheets">
+            <label for="10*4">10*4 Pvc Sheet:                     </label> <input id="10*4sheet"          type="text" placeholder="no of Sheets">
+            <label for="6msheet">6M Pvc Sheet:                     </label> <input id="6M-sheet"          type="text" placeholder="no of Sheets">
+            <label for="12msheet">12M Pvc Sheet:                     </label> <input id="12M-sheet"          type="text" placeholder="no of Sheets">
+            <label for="4msheet">4M Pvc Sheet:                     </label> <input id="4M-sheet"          type="text" placeholder="no of Sheets">
+            <label for="3msheet">3M Pvc Sheet:                     </label> <input id="3M-sheet"          type="text" placeholder="no of Sheets">
+            <label for="2msheet">2M Pvc Sheet:                     </label> <input id="2M-sheet"          type="text" placeholder="no of Sheets">
+            <label for="3/4ss">3/4" Star Screw:                     </label> <input id="3/4SS"            type="text" placeholder="no of Star Screw">
+            <label for="1ss">1" Star Screw:                         </label> <input id="1SS"              type="text" placeholder="no of Star Screw">
+            <label for="1-1/4ss">1"-1/4" Star Screw:                </label> <input id="1-1/4SS"          type="text" placeholder="no of Star Screw">
+            <label for="1-1/2ss">1"-1/2" Star Screw:                </label> <input id="1-1/2SS"          type="text" placeholder="no of Star Screw">
+            <label for="2ss">2" Star Screw:                         </label> <input id="2SS"              type="text" placeholder="no of Star Screw">
+            <label for="2-1/2ss">2"-1/2" Star Screw:                </label> <input id="2-1/2SS"          type="text" placeholder="no of Star Screw">
+            <label for="3ss">3" Star Screw:                         </label> <input id="3SS"              type="text" placeholder="no of Star Screw">
+            <label for="2-1/2*8">2"-1/2"x8 Star Screw:              </label> <input id="2-1/2*8"          type="text" placeholder="no of Star Screw">
+            <label for="TubeLight">20W TubeLight:                   </label> <input id="tubelight"        type="text" placeholder="no of tubelights">
+            <label for="SpotLight">6 Watts SpotLight(White) :       </label> <input id="6spotlight"       type="text" placeholder="no of spotlights">
+            <label for="SpotLightw">6 Watts SpotLight(Warm White) : </label> <input id="6spotlightww"     type="text" placeholder="no of spotlights">
+            <label for="BulkHead">BulkHead(Inventa):                </label> <input id="bulkhead"         type="text" placeholder="no of bulkheads">
+            <label for="Bell ">Bell:                                </label> <input id="bell"             type="text" placeholder="no of bells">
+            <label for="15 watts">15 Watts Surface Fitting(round):  </label> <input id="15surface"        type="text" placeholder="no of Fittings">
+             <label for="9wlight">9W led light:                     </label> <input id="9ledlight"        type="text" placeholder="no of lights">
+  
+
+             
+            <div class="d-flex justify-content-center mt-5">
+            <button id="submit-btn" type="submit">Submit</button>
+            </div>
+
+
+             <div class="d-flex justify-content-center mt-3 mb-5">
+            <button id="pdf-btn" onclick="mainpdfgenerate()">PDF</button>
+            </div>
+       </div>
+
+    </div>
+    <script src="Inventry list pdf.js">
+        
+      </script>
+      
