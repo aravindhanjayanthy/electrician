@@ -15,9 +15,11 @@ function mainpdfgenerate() {
     let inputData = [
         ["Builders", fetchValue("builders")],
         ['20 Watts TubeLight', fetchValue("tubelight")],
+        ['6W Spot Light', fetchValue("6nomension")],
         ['6W Spot Light (White)', fetchValue("6spotlight")],
         ['6W Spot Light (Warm White)', fetchValue("6spotlightww")],
-        ['3 Watts Junction Box LED Spot(White', fetchValue("3w-w-J-boxspot")],
+        ['3 Watts Junction Box LED Spot', fetchValue("3w-J-boxspot")],
+        ['3 Watts Junction Box LED Spot(White)', fetchValue("3w-w-J-boxspot")],
         ['3 Watts Junction Box LED Spot(Warm White)', fetchValue("3w-ww-J-boxspot")],
         ['BulkHead(Inventa)', fetchValue("bulkhead")],
         ['Up-DownLight', fetchValue("updownlight")],
